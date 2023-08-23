@@ -1,9 +1,5 @@
 {pkgs, ...}: {
   home-manager.users.cullvox = {pkgs, ...}: {
-    imports = [
-      ../home
-    ];
-
     home.packages = with pkgs; [
       firefox
       kate
