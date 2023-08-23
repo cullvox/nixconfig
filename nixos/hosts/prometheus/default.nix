@@ -10,4 +10,7 @@
 
   networking.firewall.allowedTCPPorts = [3074]; # plutonium bo2
   networking.firewall.allowedUDPPorts = [3074];
+
+  # Enable flatpaks for some packages.
+  services.flatpak.enable = true;
 }

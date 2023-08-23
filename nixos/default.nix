@@ -27,20 +27,15 @@
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # Set my time zone.
   time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
+  # Set my internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -55,28 +50,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-
-  # services.xserver.desktopManager.plasma5.enable = true;
-
-  services.flatpak.enable = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  programs.dconf.enable = true; # GNOME's registry
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  #environment.sessionVariables = {
-  #  QT_QPA_PLATFORMTHEME = "qt5ct";
-  #};
-
+  # Add homemanager to manage my home.
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.cullvox = {pkgs, ...}: {
@@ -85,11 +62,12 @@
     ];
   };
 
+  # Add my favorite fonts.
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # My user account.
   users.users.cullvox = {
     isNormalUser = true;
     description = "Caden Miller";
@@ -97,38 +75,20 @@
     hashedPassword = "$6$iekUUVuQpAjjVD6u$rRp9o7owwh5DZ0DPoCU7iIeeJrFZhSlDk/3r/kvlWNTA9CRshiSWfU6NFKd.N4vzPJqak47u2fER7q6.rXja/.";
   };
 
+  # GNOME's registry
+  programs.dconf.enable = true;
+
+  # Enable the keyring.
   services.gnome.gnome-keyring.enable = true;
 
-  # Allow unfree packages
+  # Allow unfree packages for drivers, discord and the like.
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Default applications that come with every host.
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
     helix
     clang-tools
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

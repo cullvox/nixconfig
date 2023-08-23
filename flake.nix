@@ -33,15 +33,20 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/hosts/prometheus
+          ./nixos/modules/audio.nix
           ./nixos/modules/desktop/xserver.nix
           ./nixos/modules/desktop/i3.nix
-          ./nixos/modules/applications.nix
+          ./nixos/modules/desktop/applications.nix
         ];
       };
 
       # Helios is my server computer
       hosts.helios = {
         system = "x86_64-linux";
+        modules = [
+          ./nixos/hosts/helios
+          ./nixos/modules/server.nix
+        ];
       };
     };
 }
