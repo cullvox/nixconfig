@@ -29,14 +29,17 @@
       ];
 
       # Prometheus is my powerful computer
-      # Helios is my server computer
       hosts.prometheus = {
         system = "x86_64-linux";
         modules = [
           ./nixos/hosts/prometheus
+          ./nixos/modules/desktop/xserver.nix
+          ./nixos/modules/desktop/i3.nix
+          ./nixos/modules/applications.nix
         ];
       };
 
+      # Helios is my server computer
       hosts.helios = {
         system = "x86_64-linux";
       };

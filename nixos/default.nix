@@ -63,69 +63,10 @@
 
   # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Enable flatpaks
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  };
   services.flatpak.enable = true;
-
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu #application launcher most people use
-        i3status # gives you the default i3 status bar
-        i3lock #default i3 screen locker
-        i3blocks #if you are planning on using i3blocks over i3status
-      ];
-    };
-  };
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable NVIDIA GPU
-  # NVIDIA drivers are unfree.
-
-  hardware.opengl.enable = true;
-
-  # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  hardware.opengl.driSupport32Bit = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   programs.dconf.enable = true; # GNOME's registry
 
@@ -136,46 +77,11 @@
   #  QT_QPA_PLATFORMTHEME = "qt5ct";
   #};
 
-  environment.variables.QT_QTA_PLATFORMTHEME = "qt5ct";
-
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.cullvox = {pkgs, ...}: {
     imports = [
       ../home
-    ];
-
-    home.packages = with pkgs; [
-      firefox
-      kate
-      helix
-      alacritty
-      pavucontrol
-      easyeffects
-      yuzu-mainline
-      winetricks
-      prismlauncher
-      lunar-client
-
-      qt5ct
-      breeze-icons
-      libsForQt5.elisa
-      libsForQt5.dolphin
-      libsForQt5.spectacle
-
-      #(discord.override { withOpenASAR = true; })
-      discord
-      spotify
-      lutris
-      vscode.fhs
-      (pkgs.unityhub.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            xdg-utils
-          ];
-      })
-
-      #thunderbird
     ];
   };
 
@@ -188,15 +94,10 @@
     isNormalUser = true;
     description = "Caden Miller";
     extraGroups = ["networkmanager" "wheel"];
+    hashedPassword = "$6$iekUUVuQpAjjVD6u$rRp9o7owwh5DZ0DPoCU7iIeeJrFZhSlDk/3r/kvlWNTA9CRshiSWfU6NFKd.N4vzPJqak47u2fER7q6.rXja/.";
   };
 
   services.gnome.gnome-keyring.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # open ports in the firewall for steam remote play
-    # dedicatedServer.openFirewall = true; # open ports in the firewall for source dedicated server
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -209,9 +110,6 @@
     helix
     clang-tools
   ];
-
-  networking.firewall.allowedTCPPorts = [3074]; # plutonium bo2
-  networking.firewall.allowedUDPPorts = [3074];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
