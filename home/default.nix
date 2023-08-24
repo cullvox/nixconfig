@@ -6,7 +6,7 @@
     gcc
     cmake
     nitch
-    rofi
+    wget
   ];
   programs = {
     bash.enable = true;

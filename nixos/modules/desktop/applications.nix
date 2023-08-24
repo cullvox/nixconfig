@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home-manager.users.cullvox = {pkgs, ...}: {
     home.packages = with pkgs; [
+      rofi
       firefox
       kate
       helix
