@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   home-manager.users.cullvox = {pkgs, ...}: {
     home.packages = with pkgs; [
-      nodejs-slim
+      nodejs_18
       openjdk17-bootstrap
+      screen
     ];
   };
 }
