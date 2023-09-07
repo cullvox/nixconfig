@@ -12,6 +12,9 @@
       winetricks
       prismlauncher
       lunar-client
+      blockbench-electron
+      appimage-run
+      polybar
 
       qt5ct
       breeze-icons
