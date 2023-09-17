@@ -16,7 +16,7 @@
     # hostName = "cadenmiller.dev";
     hostName = "192.168.1.32";
     home = "/mnt/cloud";
-    datadir = "/mnt/clouddata"
+    datadir = "/mnt/clouddata";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
     # https = true;
     configureRedis = true;
