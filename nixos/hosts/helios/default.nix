@@ -13,18 +13,19 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
-    hostName = "cadenmiller.dev";
+    # hostName = "cadenmiller.dev";
+    hostName = "192.168.1.32";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
-    https = true;
+    # https = true;
     configureRedis = true;
   };
 
-  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-    forceSSL = true;
-    enableACME = true;
-  };
+  #services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+  #  forceSSL = true;
+  #  enableACME = true;
+  #};
 
-  security.acme.acceptTerms = true;
+  #security.acme.acceptTerms = true;
 
   # Open some ports
   networking.firewall.allowedTCPPorts = [80 443 25565 25566]; # mc, mc bta, https:mailzor
