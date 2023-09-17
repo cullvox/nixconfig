@@ -34,21 +34,20 @@
   fileSystems."/mnt/cloud" = {
     device = "//192.168.1.85/Cloud";
     fsType = "cifs";
-     options = let
-      # this line prevents hanging on network split
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,vers=1.0,mfsymlinks";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=995,gid=994"];
-  };
-  
-
-  filesystems."/mnt/clouddata" = {
-    device = "192.168.1.85/Cloud_Data";
-    fsType = "cifs";  
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,vers=1.0,mfsymlinks";
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=995,gid=994"];
-  }
+  };
+
+  filesystems."/mnt/clouddata" = {
+    device = "192.168.1.85/Cloud_Data";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,vers=1.0,mfsymlinks";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=995,gid=994"];
+  };
 
   # Open some ports
   networking.firewall.allowedTCPPorts = [80 443 25565 25566]; # mc, mc bta, https:mailzor
