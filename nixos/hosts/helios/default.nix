@@ -32,16 +32,7 @@
   # For mount.cifs, required unless domain name resolution is not needed.
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/cloud" = {
-    device = "//192.168.1.85/Cloud";
-    fsType = "cifs";
-    options = let
-      # this line prevents hanging on network split
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,vers=1.0,mfsymlinks";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=995,gid=994"];
-  };
-
-  fileSystems."/mnt/clouddata" = {
-    device = "//192.168.1.85/Cloud_Data";
+    device = "//192.168.1.85/";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
