@@ -13,7 +13,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
-    hostName = "localhost";
+    hostName = "cloud.cadenmiller.dev";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
   };
 
