@@ -13,8 +13,15 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
-    hostName = "cloud.cadenmiller.dev";
+    hostName = "cadenmiller.dev";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
+    https = true;
+    configureRedis = true;
+  };
+
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    forceSSL = true;
+    enableACME = true;
   };
 
   # Open some ports
