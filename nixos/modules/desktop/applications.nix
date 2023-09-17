@@ -11,10 +11,12 @@
       yuzu-mainline
       winetricks
       prismlauncher
-      lunar-client
       blockbench-electron
       appimage-run
       polybar
+      libreoffice
+      lite-xl
+      godot_4
 
       qt5ct
       breeze-icons
@@ -23,6 +25,7 @@
       libsForQt5.spectacle
 
       #(discord.override { withOpenASAR = true; })
+      lunar-client
       discord
       spotify
       lutris
