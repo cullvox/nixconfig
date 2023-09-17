@@ -41,7 +41,7 @@
   };
 
   fileSystems."/mnt/clouddata" = {
-    device = "192.168.1.85/Cloud_Data";
+    device = "//192.168.1.85/Cloud_Data";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
