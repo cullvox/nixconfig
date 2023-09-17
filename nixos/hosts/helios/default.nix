@@ -15,8 +15,8 @@
     package = pkgs.nextcloud27;
     # hostName = "cadenmiller.dev";
     hostName = "192.168.1.32";
-    home = "/mnt/cloud";
-    datadir = "/mnt/clouddata";
+    home = "/mnt/nextcloud/home";
+    datadir = "/mnt/nextcloud/data";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
     # https = true;
     configureRedis = true;
@@ -31,8 +31,8 @@
 
   # For mount.cifs, required unless domain name resolution is not needed.
   environment.systemPackages = [pkgs.cifs-utils];
-  fileSystems."/mnt/cloud" = {
-    device = "//192.168.1.85/";
+  fileSystems."/mnt/nextcloud" = {
+    device = "//192.168.1.85/Cloud";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
