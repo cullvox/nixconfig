@@ -18,6 +18,6 @@
   };
 
   # Open some ports
-  networking.firewall.allowedTCPPorts = [25565 25566 443]; # mc, mc bta, https:mailzor
+  networking.firewall.allowedTCPPorts = [80 443 25565 25566]; # mc, mc bta, https:mailzor
   networking.firewall.allowedUDPPorts = [25565 25566]; # mc, mc bta
 }
