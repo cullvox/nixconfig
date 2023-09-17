@@ -40,7 +40,7 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=995,gid=994"];
   };
 
-  filesystems."/mnt/clouddata" = {
+  fileSystems."/mnt/clouddata" = {
     device = "192.168.1.85/Cloud_Data";
     fsType = "cifs";
     options = let
