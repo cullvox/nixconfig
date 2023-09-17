@@ -36,7 +36,7 @@
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,vers=1.0";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=${config.users.users.cullvox.uid},gid=${config.users.groups.cullvox.gid}"];
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
   # Open some ports
